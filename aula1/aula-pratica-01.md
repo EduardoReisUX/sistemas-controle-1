@@ -6,26 +6,23 @@ Roteiro da Aula Prática 1,
 
 ---
 **Índice do conteúdo**
-- [Manipulação de matrizes](#manipula--o-de-matrizes)
-  * [Criando e selecionando valores de uma matriz 4x5.](#criando-e-selecionando-valores-de-uma-matriz-4x5)
-  * [Matrizes Especiais](#matrizes-especiais)
-    + [Matriz Identidade 3x3](#matriz-identidade-3x3)
-    + [Matriz Nula 3x3](#matriz-nula-3x3)
-    + [Matriz 3x3 de Um](#matriz-3x3-de-um)
-    + [Matriz 3x3 de 2](#matriz-3x3-de-2)
-    + [Matriz Linha de 4 a 18 com incremento de 2](#matriz-linha-de-4-a-18-com-incremento-de-2)
-    + [*Matriz Coluna* da matriz anterior ou *Matriz Transposta*](#-matriz-coluna--da-matriz-anterior-ou--matriz-transposta-)
-    + [Limpar tela e variáveis](#limpar-tela-e-vari-veis)
-- [Geração de gráficos](#gera--o-de-gr-ficos)
-  * [Gráfico de x1 e x2  em função de t, com título, rótulos e legendas](#gr-fico-de-x1-e-x2--em-fun--o-de-t--com-t-tulo--r-tulos-e-legendas)
-  * [Gráfico de x1 e x2  em função de t, com subplots.](#gr-fico-de-x1-e-x2--em-fun--o-de-t--com-subplots)
-  * [Algumas funções para estatística](#algumas-fun--es-para-estat-stica)
+- [Manipulação de matrizes](#manipulação-de-matrizes)
+  - [Criando e selecionando valores de uma matriz 4x5.](#criando-e-selecionando-valores-de-uma-matriz-4x5)
+  - [Matrizes Especiais](#matrizes-especiais)
+    - [Matriz Identidade 3x3](#matriz-identidade-3x3)
+    - [Matriz Nula 3x3](#matriz-nula-3x3)
+    - [Matriz 3x3 de Um](#matriz-3x3-de-um)
+    - [Matriz 3x3 de 2](#matriz-3x3-de-2)
+    - [Matriz Linha de 4 a 18 com incremento de 2](#matriz-linha-de-4-a-18-com-incremento-de-2)
+    - [*Matriz Coluna* da matriz anterior ou *Matriz Transposta*](#matriz-coluna-da-matriz-anterior-ou-matriz-transposta)
+    - [Limpar tela e variáveis](#limpar-tela-e-variáveis)
+- [Geração de gráficos](#geração-de-gráficos)
+  - [Gráfico de x1 e x2  em função de t, com título, rótulos e legendas](#gráfico-de-x1-e-x2--em-função-de-t-com-título-rótulos-e-legendas)
+  - [Gráfico de x1 e x2  em função de t, com subplots.](#gráfico-de-x1-e-x2--em-função-de-t-com-subplots)
+  - [Algumas funções para estatística](#algumas-funções-para-estatística)
 - [Exemplos de Algoritmo](#exemplos-de-algoritmo)
-  * [Fibonacci](#fibonacci)
-  * [Desafio - Pares e Ímpares](#desafio---pares-e--mpares)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
-
+  - [Fibonacci](#fibonacci)
+  - [Desafio - Pares e Ímpares](#desafio---pares-e-ímpares)
 
 ## Manipulação de matrizes
 
