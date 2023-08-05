@@ -1,11 +1,9 @@
-﻿
-  
-Sistemas de Controle I, 
-Roteiro da Aula Prática 1, 
-05 de julho de 2023.
+﻿Sistemas de Controle I, Roteiro da Aula Prática 1, 05 de julho de 2023.
 
 ---
-**Índice do conteúdo**
+
+**Sumário**
+
 - [Manipulação de matrizes](#manipulação-de-matrizes)
   - [Criando e selecionando valores de uma matriz 4x5.](#criando-e-selecionando-valores-de-uma-matriz-4x5)
   - [Matrizes Especiais](#matrizes-especiais)

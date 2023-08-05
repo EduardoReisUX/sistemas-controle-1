@@ -2,7 +2,7 @@ Sistemas de Controle I, Roteiro da Aula Prática 2, 12 de julho de 2023.
 
 ---
 
-**Índice do conteúdo**
+**Sumário**
 
 - [Circuito RC](#circuito-rc)
   - [MatLab e Simulink](#matlab-e-simulink)

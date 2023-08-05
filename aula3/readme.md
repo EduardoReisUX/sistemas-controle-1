@@ -2,7 +2,8 @@
 
 ---
 
-Resumo da aula:
+**Resumo da aula**
+
 - comandos aprendido e/ou utilizados:
   - laplace
   - ilaplace
@@ -16,7 +17,7 @@ Resumo da aula:
   - parallel
   - conv
 
-**Índice do conteúdo**
+**Sumário**
 
 - [Biblioteca Virtual](#biblioteca-virtual)
 - [Sistemas LIT](#sistemas-lit)
