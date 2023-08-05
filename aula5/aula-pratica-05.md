@@ -25,7 +25,7 @@ Considere um sistema não linear:
 
 $$ f(x, y) = x^2 + 4xy + 6y^2 $$
 
-com os valores de $ x = [8, 10] $ e $ y = [2, 4] $.
+com os valores de $x = [8, 10]$ e $y = [2, 4]$.
 
 Linearizando o sistema:
 
@@ -172,4 +172,4 @@ grid
 
 ![MAPE do sistema](imgs/mape-2.png)
 
-A conclusão que podemos fazer observando o gráfico é que o sistema é extremamente sensível a valores pequenos, como pode ser visto em x < 10.
+A conclusão que podemos fazer observando o gráfico é que o sistema é extremamente sensível a valores pequenos, como pode ser visto em $x < 10$.
