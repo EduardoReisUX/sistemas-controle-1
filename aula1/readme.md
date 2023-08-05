@@ -12,11 +12,11 @@
     - [Matriz 3x3 de Um](#matriz-3x3-de-um)
     - [Matriz 3x3 de 2](#matriz-3x3-de-2)
     - [Matriz Linha de 4 a 18 com incremento de 2](#matriz-linha-de-4-a-18-com-incremento-de-2)
-    - [*Matriz Coluna* da matriz anterior ou *Matriz Transposta*](#matriz-coluna-da-matriz-anterior-ou-matriz-transposta)
+    - [Matriz Coluna da matriz anterior, ou Matriz Transposta](#matriz-coluna-da-matriz-anterior-ou-matriz-transposta)
     - [Limpar tela e variáveis](#limpar-tela-e-variáveis)
 - [Geração de gráficos](#geração-de-gráficos)
-  - [Gráfico de x1 e x2  em função de t, com título, rótulos e legendas](#gráfico-de-x1-e-x2--em-função-de-t-com-título-rótulos-e-legendas)
-  - [Gráfico de x1 e x2  em função de t, com subplots.](#gráfico-de-x1-e-x2--em-função-de-t-com-subplots)
+  - [Gráfico de x1 e x2 em função de t, com título, rótulos e legendas](#gráfico-de-x1-e-x2-em-função-de-t-com-título-rótulos-e-legendas)
+  - [Gráfico de x1 e x2 em função de t com subplots.](#gráfico-de-x1-e-x2-em-função-de-t-com-subplots)
   - [Algumas funções para estatística](#algumas-funções-para-estatística)
 - [Exemplos de Algoritmo](#exemplos-de-algoritmo)
   - [Fibonacci](#fibonacci)
@@ -60,7 +60,7 @@
 >> f = 4:2:18
 ```
 
-####  *Matriz Coluna* da matriz anterior ou *Matriz Transposta* 
+####  Matriz Coluna da matriz anterior, ou Matriz Transposta 
 ```matlab
 >> g = f'
 ```
@@ -73,7 +73,7 @@
 
 ## Geração de gráficos
 
-### Gráfico de x1 e x2  em função de t, com título, rótulos e legendas
+### Gráfico de x1 e x2 em função de t, com título, rótulos e legendas
 
 ```matlab
 % Aula Apresentação do MatLab
@@ -118,7 +118,7 @@ legend('Resposta do Sistema', 'Resposta do Modelo')
 help plot
 ```
 
-### Gráfico de x1 e x2  em função de t, com subplots.
+### Gráfico de x1 e x2 em função de t com subplots.
 
 ```matlab
 % Com sub-plots

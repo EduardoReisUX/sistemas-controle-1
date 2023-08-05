@@ -11,7 +11,7 @@ Sistemas de Controle I, Roteiro da Aula Prática 2, 12 de julho de 2023.
     - [Circuito no Simulink](#circuito-no-simulink)
     - [Desenhando gráfico pelo terminal](#desenhando-gráfico-pelo-terminal)
     - [Declarando Função de Transferência do circuito](#declarando-função-de-transferência-do-circuito)
-    - [Exemplo circuitos em série, paralelo e em retroalimentação negativo.](#exemplo-circuitos-em-série-paralelo-e-em-retroalimentação-negativo)
+    - [Exemplo circuitos em série, paralelo e em retroalimentação negativa.](#exemplo-circuitos-em-série-paralelo-e-em-retroalimentação-negativa)
   - [Octave](#octave)
     - [Funções básicas](#funções-básicas)
 - [Circuito RC de segunda ordem](#circuito-rc-de-segunda-ordem)
@@ -124,7 +124,7 @@ plot(
 )
 ```
 
-#### Exemplo circuitos em série, paralelo e em retroalimentação negativo.
+#### Exemplo circuitos em série, paralelo e em retroalimentação negativa.
 
 $$G_1 = \frac{s}{s + 3}$$
 $$G_2 = \frac{2}{s + 7}$$
