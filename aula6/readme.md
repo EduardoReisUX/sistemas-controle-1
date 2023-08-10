@@ -9,25 +9,28 @@ Foi discutido sobre os conceitos da modelagem de um sistema massa-mola-amorteced
 **Sumário**
 
 - [Sistema massa-mola-amortecedor](#sistema-massa-mola-amortecedor)
-  - [Discussão acerca do sistema](#discussão-acerca-do-sistema)
-  - [Implementações no MATLAB](#implementações-no-matlab)
-    - [Elaborando script](#elaborando-script)
-    - [Simulando pelo Simulink](#simulando-pelo-simulink)
+  - [Desenvolvimento da Função de Transferência](#desenvolvimento-da-função-de-transferência)
+  - [Desenvolvimento do Espaço de Estados](#desenvolvimento-do-espaço-de-estados)
+  - [Diagrama de Blocos](#diagrama-de-blocos)
+  - [Relação entre função de transferência e espaço de estados](#relação-entre-função-de-transferência-e-espaço-de-estados)
+- [Implementações no MATLAB](#implementações-no-matlab)
+  - [Elaborando script](#elaborando-script)
+  - [Simulando pelo Simulink](#simulando-pelo-simulink)
 
 
 ## Sistema massa-mola-amortecedor
 
-### Discussão acerca do sistema
+### Desenvolvimento da Função de Transferência
 
-Seja o sistema abaixo em que $M$ é a massa, $B$ é o coeficiente de viscosidade e $K$ é a constante elásttica da mola.
+Seja o sistema abaixo em que $M$ é a massa, $B$ é o coeficiente de viscosidade e $K$ é a constante elástica da mola.
 
-Se uma força $u(t)$ for aplicada ao sistema, ocorrerá um deslocamento da massa do sistema $que$ na coordenada $y(t)$ é assim descrita:
+![Sistema massa-mola-amortecedor](imgs/sistema-massa-mola-amortecedor.jpg)
+
+Se uma força $u(t)$ for aplicada ao sistema, ocorrerá um deslocamento da massa do sistema na coordenada $y(t)$, em que assim é descrita:
 
 $$ k \cdot y(t) + b \cdot \frac{ d } { dt } y(t) + M \cdot \frac{ d^2 } { dt^2 } y(t) = u(t) $$
 
-TODO: img do sistema massa-mola-amortecedor
-
-Aplicando a Transformada de Laplace à expressão que descarte a dinâmico do sistema em resposta à força $u(t)$ aplicada, levando em conta as condições iniciais nulas, teremos que:
+Aplicando a Transformada de Laplace à expressão que descarte o dinâmico do sistema em resposta à força $u(t)$ aplicada, levando em conta as condições iniciais nulas, teremos que:
 
 $$ k \cdot Y(s) + b \cdot Y(s) \cdot s + M \cdot Y(s) \cdot s^2 = U(s) $$
 
@@ -35,9 +38,11 @@ Isto é:
 
 $$ Y(s) \cdot [ K + Bs + Ms^2 ] = U(s) $$
 
-Portanto, a função de transferência que relaciona o deslocamento com a força aplicada ao sistema é:
+Portanto, a **função de transferência** que relaciona o deslocamento com a força aplicada ao sistema é:
 
 $$ \frac{ Y(s) }{ U(s) } = \frac{ 1 }{ Ms^2 + Bs + k } $$
+
+### Desenvolvimento do Espaço de Estados
 
 Outra representação possível é por meio do que denominamos **Espaço de Estados**. Neste caso, vamos definir as seguintes variáveis de estados:
 
@@ -65,11 +70,15 @@ também:
 
 $$ \dot{x}_1(t) = 0 x_1(t) + 1 x_2(t) + 0 u(t) $$
 
-Equação de Estados Internos fica:
+A Equação de Estados Internos ficará da seguinte maneira:
 
-$$ \dot{x}_1(t) = 0x_1(t) + 1x_2(t) + 0u(t) $$
+$$
+\begin{cases}
+  \dot{x}_1(t) = 0x_1(t) + 1x_2(t) + 0u(t) \\
 
-$$ \dot{x}_2(t) = - \frac{ k }{ M } x_1(t) - \frac{ B }{ M } x_2(t) + \frac{ 1 }{ M } u(t) $$
+  \dot{x}_2(t) = - \frac{ k }{ M } x_1(t) - \frac{ B }{ M } x_2(t) + \frac{ 1 }{ M } u(t)
+\end{cases}
+$$
 
 A saída será dada por:
 
@@ -77,29 +86,87 @@ $$ y(t) = 1 x_2(t) + 0 x_2(t) + 0 u(t) $$
 
 Na forma matricial, teremos:
 
-TODO: imagem das matrizes A B C e D aqui ou fazer pelo mathjax
-
 $$
-  \left[\begin{array}{rrr|r}
-    1 & 2 & 4 & 8 \\
-    16 & 32 & 64 & 128 \\
-    256 & 512 & 1024 & 2048
+  \left[\begin{array}{r}
+    \dot{x}_1(t) \\
+    \dot{x}_2(t) \\
+  \end{array}\right]
+
+  =
+
+  \left[\begin{array}{rr}
+    0 & 1 \\
+    - \frac{ k }{ M } & - \frac{ B }{ M } \\
+  \end{array}\right]
+
+  \cdot
+
+  \left[\begin{array}{r}
+    x_1(t) \\
+    x_2(t) \\
+  \end{array}\right]
+
+  +
+
+  \left[\begin{array}{r}
+    0 \\
+    \frac{ 1 }{ M } \\
   \end{array}\right]
 $$
 
-- Matriz A - Matriz de estados internos
-- Matriz B - Vetor de entrada
-- Matriz C - Vetor de saída
-- Matriz D - Vetor de transmissão direta (offset, ou ganho estático).
+$$
+  \left[\begin{array}{r}
+    y(t)
+  \end{array}\right]
+
+  =
+
+  \left[\begin{array}{rr}
+    1 & 0 \\
+  \end{array}\right]
+
+  \cdot
+
+  \left[\begin{array}{r}
+    x_1(t) \\
+    x_2(t) \\
+  \end{array}\right]
+
+  +
+
+  \left[\begin{array}{r}
+    0 \\
+  \end{array}\right]
+
+  \cdot
   
+  u
+$$
+
+A = $\left[\begin{array}{rr} 0 & 1 \\ - \frac{ k }{ M } & - \frac{ B }{ M } \\ \end{array} \right]$ é a matriz de estados internos;
+
+B = $\left[\begin{array}{rr} 0 \\ \frac{ 1 }{ M } \\ \end{array}\right]$ é o vetor de entrada;
+
+C = $\left[\begin{array}{rr} 1 & 0 \\ \end{array}\right]$ é o vetor de saída;
+
+D = $\left[\begin{array}{rr} \empty \end{array}\right]$ é o vetor de transmissão direta (offset, ou ganho estático).
+
 A representação compacta deste sistema é:
 
-$$ \dot{x}(t) = A \cdot x(t) + B \cdot u(t) $$
-$$ y(t) = C \cdot x(t) + D \cdot u(t) $$
+$$
+\begin{cases}
+  \dot{x}(t) = A \cdot x(t) + B \cdot u(t) \\
+  y(t) = C \cdot x(t) + D \cdot u(t) \\
+\end{cases}
+$$
+
+### Diagrama de Blocos
 
 Em diagrama de blocos, temos:
 
-TODO: imagem do diagrama de blocos aqui
+![Diagrama de blocos do sistema](imgs/diagrama-de-blocos.jpg)
+
+### Relação entre função de transferência e espaço de estados
 
 A relação entre a função de transferência e espaço de estados pode assim ser obtido:
 
@@ -113,7 +180,7 @@ $$ X(s) \cdot s - A \cdot X(s) = B \cdot U(s) $$
 
 Este $I$ abaixo significa que é uma matriz identidade.
 
-$$ (sI - A ) \cdot X(s) = B \cdot U(s) $$
+$$ (sI - A) \cdot X(s) = B \cdot U(s) $$
 
 Por se tratar de multiplicação matricial, a ordem abaixo importa. Faça da esquerda para direita.
 
@@ -133,9 +200,9 @@ Considerando o ganho estático D = 0, pois na área de sistemas de controle preo
 
 $$ \frac{ Y(s) }{ U(s) } = C \cdot (sI - A)^{-1} \cdot B $$
 
-### Implementações no MATLAB
+## Implementações no MATLAB
 
-#### Elaborando script
+### Elaborando script
 
 Definindo um sistema massa-mola-amortecedor, sua função de transferência e traduzindo para espaço de estados e vice-versa.
 
@@ -160,7 +227,7 @@ tf(NUM, DEN)
 step(A, B, C, D)
 ```
 
-#### Simulando pelo Simulink
+### Simulando pelo Simulink
 
 TODO: simular corretamente e inserir resultado do gráfico
 
