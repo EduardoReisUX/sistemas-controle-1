@@ -75,8 +75,7 @@ A Equação de Estados Internos ficará da seguinte maneira:
 $$
 \begin{cases}
   \dot{x}_1(t) = 0x_1(t) + 1x_2(t) + 0u(t) \\
-
-  \dot{x}_2(t) = - \frac{ k }{ M } x_1(t) - \frac{ B }{ M } x_2(t) + \frac{ 1 }{ M } u(t)
+  \dot{x}_2(t) = - \frac{ k }{ M } x_1(t) - \frac{ B }{ M } x_2(t) + \frac{ 1 }{ M } u(t) \\
 \end{cases}
 $$
 
@@ -90,24 +89,15 @@ $$
   \left[\begin{array}{r}
     \dot{x}_1(t) \\
     \dot{x}_2(t) \\
-  \end{array}\right]
-
-  =
-
+  \end{array}\right] =
   \left[\begin{array}{rr}
     0 & 1 \\
     - \frac{ k }{ M } & - \frac{ B }{ M } \\
-  \end{array}\right]
-
-  \cdot
-
+  \end{array}\right] \cdot
   \left[\begin{array}{r}
     x_1(t) \\
     x_2(t) \\
-  \end{array}\right]
-
-  +
-
+  \end{array}\right] +
   \left[\begin{array}{r}
     0 \\
     \frac{ 1 }{ M } \\
@@ -117,39 +107,29 @@ $$
 $$
   \left[\begin{array}{r}
     y(t)
-  \end{array}\right]
-
-  =
-
+  \end{array}\right] =
   \left[\begin{array}{rr}
     1 & 0 \\
-  \end{array}\right]
-
-  \cdot
-
+  \end{array}\right] \cdot
   \left[\begin{array}{r}
     x_1(t) \\
     x_2(t) \\
-  \end{array}\right]
-
-  +
-
+  \end{array}\right] +
   \left[\begin{array}{r}
     0 \\
-  \end{array}\right]
-
-  \cdot
-  
+  \end{array}\right] \cdot  
   u
 $$
 
-A = $\left[\begin{array}{rr} 0 & 1 \\ - \frac{ k }{ M } & - \frac{ B }{ M } \\ \end{array} \right]$ é a matriz de estados internos;
+Temos algumas matrizes acimas que possuem identidades, dentre eles:
 
-B = $\left[\begin{array}{rr} 0 \\ \frac{ 1 }{ M } \\ \end{array}\right]$ é o vetor de entrada;
+A = $`\begin{bmatrix} 0 & 1 \\ - \frac{ k }{ M } & - \frac{ B }{ M } \\ \end{bmatrix}`$ é a matriz de estados internos;
 
-C = $\left[\begin{array}{rr} 1 & 0 \\ \end{array}\right]$ é o vetor de saída;
+B = $`\begin{bmatrix} 0 \\ \frac{ 1 }{ M } \\ \end{bmatrix}`$ é o vetor de entrada;
 
-D = $\left[\begin{array}{rr} \empty \end{array}\right]$ é o vetor de transmissão direta (offset, ou ganho estático).
+C = $`\begin{bmatrix} 1 & 0 \\ \end{bmatrix}`$ é o vetor de saída;
+
+D = $`\begin{bmatrix} \emptyset \end{bmatrix}`$ é o vetor de transmissão direta (offset, ou ganho estático).
 
 A representação compacta deste sistema é:
 
