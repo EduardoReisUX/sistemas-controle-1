@@ -4,13 +4,19 @@ Sistemas de Controle I, Roteiro da Aula Prática 10, 06 de setembro de 2023.
 
 **Resumo da aula**
 
-Foi feito diversas simulações de respostas de um sistema de segunda ordem para que pudessemos verificar a influência do posicionamento dos polos.
+Foram feitas diversas simulações de respostas de um sistema de segunda ordem para que pudessemos verificar a influência do posicionamento dos polos.
 
 Também foram feitas implementações para verificar o fenômeno da dominância de polos.
 
 **Sumário**
 
-TODO
+- [Posicionamento dos polos](#posicionamento-dos-polos)
+  - [Código MATLAB](#código-matlab)
+  - [Resultado](#resultado)
+- [Dominância de Polos](#dominância-de-polos)
+  - [Código MATLAB](#código-matlab-1)
+  - [Resultado](#resultado-1)
+
 
 ## Posicionamento dos polos
 
@@ -27,14 +33,14 @@ t = 0 : 0.01 : 10;
 
 % FIGURA 1 ----------------------
 
-ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 2 ]); % ga tem polo no origem: instável
-g1 = tf( 1, [ 1 1 0 ] ); 
+ga = tf(1, [ 1 0 ]); gb = tf(1, [ 1 1 ]); % ga tem polo no origem, instável
+g1 = series(ga, gb);
 
-ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 2 ]);  % gb tem polo positivo, fator de amortecimento < 0, instável
-g2 = tf( 1, [ 1 0 -1 ] );
+ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 -1 ]);  % gb tem polo positivo, fator de amortecimento < 0, instável
+g2 = series(ga, gb);
 
-ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 2 ]); % polos iguais, fator de amortecimento = 1, críticamente amortecido
-g3 = tf( 1, [ 1 2 1 ] );
+ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 1 ]); % polos iguais, fator de amortecimento = 1, críticamente amortecido
+g3 = series(ga, gb);
 
 ga = tf(1, [ 1 1 ]); gb = tf(1, [ 1 2 ]); % fator de amortecimento maior que 1, super amortecido
 g4 = series(ga, gb);
@@ -90,13 +96,46 @@ subplot(lin, col, 8)
 plot(x8, y8)
 ```
 
+Lembrando que a função de transferência de um sistema de segunda ordem é definido por:
+
+$$ G(s) = k \frac{ \omega_n^2 }{ s^2 + 2 \zeta \omega_n s + \omega_n^2 } $$
+
+Em que:
+
+- k: Ganho do sistema.
+- $\omega_n$ (omega n): frequência natural.
+- $\zeta$ (zeta): Coeficiente de amortecimento.
+
+Ou ainda, podemos defini-lo como dois sistemas de primeira ordem:
+
+$$ G(s) = k_1 k_2 \frac{ 1 }{ (\tau_1 s + 1) (\tau_2 s + 1) } = k_3 \frac{ 1 }{ (s + P_1) (s + P_2) } $$
+
+- $\tau$ (tau): constante de tempo.
+- P: polos do sistema.
+
 ### Resultado
 
 ![Resultado em relação ao posicionamento dos polos](imgs/resultado-1.png)
 
-TODO: descrever cada resposta 
+Para cada sistema, haverá uma resposta diferente baseada nas propriedade do posicionamento dos polos no eixo x, y (real e imaginário).
 
-## Dominancia de Polos
+1. Um dos polos, (s + 0), está na origem, portanto o sistema é instável.
+2. Um dos polos, (s - 1), é positivo, o fator de amortecimento é menor que 0. Sistema instável.
+3. Os dois polos (s + 1) são iguais, o fator de amortecimento é igual a 1. Sistema críticamente amortecido.
+4. (s + 1)(s + 2) Fator de amortecimento maior que 1. Sistema super amortecido.
+5. (s + 1)(s + 2) Fator de amortecimento maior que 1. Sistema super amortecido.
+6. (s + 1 + j)(s + 1 - j) Fator de amortecimento entre 0 e 1. Sistema sub amortecido.
+7. (s + 1 + 2j)(s + 1 - 2j) Ao aumentar a parte imaginária, aumenta o máximo de pico. Sistema sub amortecido.
+8. (s + 2 + j)(s + 2 - j) Ao aumentar a parte real, aumenta o amortecimento. Sistema sub amortecido.
+
+Ou seja:
+
+- Polo na origem OU polo positivo: instável.
+- Polos iguais reais: críticamente amortecido.
+- Polos diferentes reais: super amortecido.
+- Polos diferentes complexos: sub amortecido.
+
+## Dominância de Polos
 
 ### Código MATLAB
 
